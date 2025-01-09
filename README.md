@@ -1,66 +1,17 @@
-## Foundry
+## What does this basic project do
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+ This contract is a simple voting system for proposals created by the owner.
 
-Foundry consists of:
+In proposals, we have a description for the explanation of the proposal.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+We also have variables for holding numbers of approve, reject and pass votes. 
 
-## Documentation
+We also have couple of additional fields that helps us to track more information about our proposals.
 
-https://book.getfoundry.sh/
+The owner can create a new proposal with a description and a vote limit, and other users can vote to approve, reject or pass the proposal. 
 
-## Usage
+The contract calculates the current state of the proposal based on the number of votes, and ends the proposal when the vote limit is reached. 
 
-### Build
+The contract also keeps a history of all the proposals and their outcomes, and prevents users from voting more than once.
 
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+The contract uses some modifiers to restrict access and check conditions, and some helper functions to implement the logic
